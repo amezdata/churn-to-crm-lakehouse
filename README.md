@@ -1,4 +1,4 @@
-# Data, the subject still pending
+# Churn to CRM Lakehouse for a STEM Education Company 
 
 STEMStar is a fictional education company that teaches AI to children, and it isn't using its own data.
 Enrolment, attendance and renewal records sit in three separate databases with no shared keys, the renewal
