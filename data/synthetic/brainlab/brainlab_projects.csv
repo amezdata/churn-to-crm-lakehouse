@@ -1,0 +1,12 @@
+project_id,project_name,program_key,duration_hours,step_count,sessions_needed,topics
+rgb_led,RGB LED light,prg_level_1,5,12,2,"breadboard,wires,color_theory,potentiometer,rgb_led,ide_intro"
+self_driving_car,Self-driving car,prg_level_1,8,20,4,"microcontroller,ultrasonic_sensor,led,motion,servo,motor_driver"
+weather_station,Weather station,prg_level_1,8,24,4,"microcontroller,lcd,sensors,temperature,light_level,gyroscope"
+l2_project_1,Level 2 project 1,prg_level_2,8,28,12,"closed_build,guided_variation"
+l2_project_2,Level 2 project 2,prg_level_2,8,28,12,"closed_build,guided_variation"
+skill_python_foundations,Python foundations,prg_skills,6,10,6,"syntax,control_flow,functions"
+skill_electronics_lab,Electronics lab,prg_skills,6,10,6,"circuits,components,measurement"
+skill_data_sensing,Data sensing,prg_skills,6,10,6,"sensors,logging,charts"
+skill_embedded_logic,Embedded logic,prg_skills,6,10,6,"gpio,timing,state_machines"
+skill_model_basics,Model basics,prg_skills,6,10,6,"features,training,overfitting"
+skill_build_showcase,Prototype showcase,prg_skills,6,10,6,"integration,demo,documentation"

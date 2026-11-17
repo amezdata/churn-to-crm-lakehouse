@@ -1,0 +1,57 @@
+contract:
+  name: brainlab_platform_logs
+  version: "0.3.0"
+  owner: operational_domain
+  source: brainlab_json
+  format: jsonl
+  layer_from: bronze
+  layer_to: silver
+  sla:
+    frequency: daily
+    freshness_hours: 24
+  schema:
+    - name: event_id
+      type: string
+      nullable: false
+    - name: event_ts
+      type: timestamp
+      nullable: false
+    - name: event_type
+      type: string
+      nullable: false
+    - name: platform_session_id
+      type: string
+      nullable: false
+    - name: student_token
+      type: string
+      nullable: true
+    - name: project_id
+      type: string
+      nullable: false
+    - name: step_index
+      type: integer
+      nullable: true
+    - name: session_key
+      type: string
+      nullable: true
+    - name: source_system
+      type: string
+      nullable: false
+  quality:
+    - rule: not_null
+      columns: [event_id, event_ts, event_type, platform_session_id]
+    - rule: allowed_values
+      column: event_type
+      values:
+        - session_started
+        - session_paused
+        - session_resumed
+        - session_completed
+        - session_abandoned
+      notes: Bronze may contain typos; the quality gate rejects unexplained drift.
+    - rule: no_pedagogical_payload
+      forbidden_fields: [question_text, answer_text, is_correct, difficulty_score]
+    - rule: regex
+      column: student_token
+      pattern: "^[0-9a-f]{16}$"
+      when: student_token is not empty

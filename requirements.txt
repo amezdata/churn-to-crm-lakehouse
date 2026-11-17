@@ -1,0 +1,2 @@
+# Same as `pip install -e ".[dev]"`; see pyproject.toml for the package and its extras.
+-e .[dev]

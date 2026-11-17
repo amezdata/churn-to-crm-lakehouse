@@ -1,0 +1,4 @@
+employee_token,campus,role,is_educator,specialty,start_date,employment_status,source_system
+73f60a08a1cca04b,campus_03,educator,True,ai,2026-06-01,active,brainlab_csv
+2e4d4de129b7000a,campus_03,educator,True,ai,2026-06-01,active,brainlab_csv
+f1361feb8306095d,campus_03,educator,True,ai,2026-06-01,active,brainlab_csv

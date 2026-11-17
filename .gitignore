@@ -1,0 +1,45 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/
+
+# Secrets and local credentials
+.env
+.env.*
+.secrets/*
+!.secrets/README.md
+*.pem
+*.key
+company_context.txt
+company_context.*
+
+# Operational sources with PII (never commit)
+*.xlsx
+*.xls
+*.xlsm
+data/raw/
+data/processed/
+data/*.txt
+
+# Synthetic STEMStar extracts: regenerated in under a second with `python -m stemstar_synth`
+data/synthetic/stemstar/
+
+# Working notes from the remake (glossary, real-data profile): never publish
+.remake/
+
+# Local lakehouse output (Parquet / DuckDB)
+lakehouse/
+
+# Jupyter / IDE / OS
+.ipynb_checkpoints/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

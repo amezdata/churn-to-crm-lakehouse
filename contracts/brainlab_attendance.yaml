@@ -1,0 +1,51 @@
+contract:
+  name: brainlab_attendance
+  version: "0.3.0"
+  owner: operational_domain
+  source: brainlab_csv
+  layer_from: bronze
+  layer_to: silver
+  sla:
+    frequency: daily
+    freshness_hours: 24
+  schema:
+    - name: attendance_key
+      type: string
+      nullable: false
+    - name: session_key
+      type: string
+      nullable: false
+    - name: student_token
+      type: string
+      nullable: false
+    - name: enrolment_key
+      type: string
+      nullable: false
+    - name: attendance_status
+      type: string
+      nullable: false
+    - name: time_slot
+      type: string
+      nullable: false
+    - name: check_in_time
+      type: timestamp
+      nullable: true
+    - name: recorded_by
+      type: string
+      nullable: true
+    - name: source_system
+      type: string
+      nullable: false
+  quality:
+    - rule: not_null
+      columns: [attendance_key, session_key, student_token]
+    - rule: allowed_values
+      column: attendance_status
+      values: [present, absent, late, excused]
+      notes: Bronze may contain aliases from a second check-in app (attended, no_show); Silver conforms them.
+    - rule: regex
+      column: student_token
+      pattern: "^[0-9a-f]{16}$"
+    - rule: referential
+      column: session_key
+      references: brainlab_sessions.session_key

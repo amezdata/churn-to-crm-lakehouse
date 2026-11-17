@@ -1,0 +1,4 @@
+program_key,program_name,program_family,domain,grade_min,grade_max,has_phase_model,default_session_count,unit_sold,is_active
+prg_level_1,Level 1 projects,brainlab,ai,6,12,True,3,open_project_session,True
+prg_level_2,Level 2 programs,brainlab,ai,6,12,True,12,monthly_round,True
+prg_skills,Skills courses,brainlab,ai,6,12,False,6,course,True

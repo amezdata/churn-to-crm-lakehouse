@@ -1,0 +1,43 @@
+# Microsoft Fabric: Delta tables in the lakehouse attached to the notebook.
+# Bronze is loaded there by Data Factory copy jobs (STEMStar silos from Postgres, BrainLab files from
+# OneLake), so the pipeline starts at Silver.
+storage: spark
+lakehouse_dir: /lakehouse/default/Tables   # not used by Spark storage; kept for reference
+brainlab_source: /lakehouse/default/Files/landing/brainlab
+stemstar_source: /lakehouse/default/Files/landing/stemstar
+generate_stemstar: false
+contracts_dir: /tmp/pipeline_libs/contracts_yaml
+seed: 42
+kpi_tolerance_pct: 1.0
+
+# Row counts a seed-42 run produces (the same data as config/local.yaml). The observability stage fails
+# when a table drifts more than 1% from these.
+expected_volumes:
+  bronze.stemstar_db_customers_enrolment: 3469
+  bronze.brainlab_enrolments: 179
+  bronze.brainlab_platform_logs: 2278
+  silver.stemstar_students: 2142
+  silver.stemstar_enrolments: 3469
+  silver.stemstar_absences: 4785
+  silver.brainlab_students: 48
+  silver.brainlab_enrolments: 179
+  silver.brainlab_attendance: 1287
+  silver.brainlab_platform_logs: 2268
+  silver.identity_map: 2190
+  silver.kpi_reconciliation: 44
+  silver.contract_violations: 0
+  gold.dim_date: 1781
+  gold.dim_campus: 1
+  gold.dim_student: 2190
+  gold.dim_program: 8
+  gold.dim_employee: 35
+  gold.dim_room: 8
+  gold.fact_enrolment: 3648
+  gold.fact_attendance: 93920
+  gold.fact_payment: 179
+  gold.fact_occupancy: 370
+  gold.fact_lead: 82
+  gold.fact_renewal_kpi: 44
+  gold.features_churn: 3648
+  gold.scores_churn: 3648
+  crm.scores_churn: 3648

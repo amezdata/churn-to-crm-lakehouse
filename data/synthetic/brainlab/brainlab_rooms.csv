@@ -1,0 +1,9 @@
+room_key,campus,room_name,room_type,capacity,equipment,is_bookable
+room_platform_hall,campus_03,Platform hall ,open_space,24,workstations,True
+room_studio_1,campus_03,Studio 1,classroom,12,workstations,True
+room_studio_2,campus_03,Studio 2,classroom,12,workstations,True
+room_studio_3,campus_03,Studio 3,classroom,12,,True
+room_demo_stage,campus_03,Demo stage,stage,40,projector,True
+room_machinery,campus_03,Machinery room,maker_room,8,"laser_cutter,cnc",True
+room_workshop,campus_03,Workshop,maker_room,16,assembly_benches,True
+room_office,campus_03,Office,classroom,4,,False

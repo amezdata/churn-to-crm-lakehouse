@@ -1,0 +1,67 @@
+contract:
+  name: brainlab_enrolment
+  version: "0.3.0"
+  owner: operational_domain
+  source: brainlab_csv
+  layer_from: bronze
+  layer_to: silver
+  sla:
+    frequency: daily
+    freshness_hours: 24
+  schema:
+    - name: enrolment_key
+      type: string
+      nullable: false
+    - name: student_token
+      type: string
+      nullable: false
+    - name: guardian_token
+      type: string
+      nullable: false
+    - name: offering_key
+      type: string
+      nullable: false
+    - name: program_key
+      type: string
+      nullable: false
+    - name: project_id
+      type: string
+      nullable: false
+    - name: enrolment_date
+      type: date
+      nullable: false
+    - name: term
+      type: string
+      nullable: false
+    - name: price_paid
+      type: decimal
+      nullable: false
+    - name: enrolment_status
+      type: string
+      nullable: false
+    - name: is_renewal
+      type: boolean
+      nullable: false
+    - name: previous_enrolment_key
+      type: string
+      nullable: true
+    - name: source_system
+      type: string
+      nullable: false
+  quality:
+    - rule: not_null
+      columns:
+        - enrolment_key
+        - student_token
+        - offering_key
+    - rule: allowed_values
+      column: enrolment_status
+      values: [active, completed, cancelled, withdrawn]
+    - rule: allowed_values
+      column: program_key
+      values: [prg_level_1, prg_level_2, prg_skills]
+    - rule: regex
+      column: student_token
+      pattern: "^[0-9a-f]{16}$"
+    - rule: no_pii_columns
+      forbidden: [name, email, phone, school_name]
